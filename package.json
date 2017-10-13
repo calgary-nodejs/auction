@@ -1,0 +1,37 @@
+{
+  "name": "auction",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "server": "node ./src/server",
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Polad Mirzayev",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "webpack": "^3.5.6",
+    "webpack-dev-server": "^2.7.1"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.1",
+    "express": "^4.15.4",
+    "faker": "^4.1.0",
+    "moment": "^2.18.1",
+    "numeral": "^2.0.6",
+    "rxjs": "^5.4.3",
+    "snabbdom": "^0.7.0",
+    "snabbdom-jsx": "^0.3.1",
+    "socket.io": "^2.0.3",
+    "union-type": "^0.4.0"
+  }
+}

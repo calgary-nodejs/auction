@@ -1,0 +1,13 @@
+[{
+  "id": "62aee188-d0de-471a-8e2e-2918b0bfdd62",
+  "name": "Mini Cooper",
+  "picture": "http://lorempixel.com/128/128/transport/8/",
+  "startPrice": 17500,
+  "currentPrice": 17600,
+  "endTime": "2017-10-07T22:53:04.118Z",
+  "bidHistory": [{
+    "bidder": "2babaf6a6d5c...",
+    "amount": 100,
+    "time": "2017-10-08T08:39:00.401Z"
+  }]
+}]
