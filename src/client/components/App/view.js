@@ -53,6 +53,12 @@ const view = ({ state, dispatch }) => (
       </div>
     </div>
 
+    {state.watchCount > 0 ?
+      <div className="watchCount">
+        Others watching: {state.watchCount}
+      </div>
+      : '' }
+
     {state.error ?
       <div classNames="alert alert-dismissible alert-danger toast">
         {state.error.message}

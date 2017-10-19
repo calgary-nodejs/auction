@@ -9,3 +9,9 @@
     right: 12px;
     width: 300px;
 }
+
+.watchCount {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
