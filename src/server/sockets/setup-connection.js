@@ -5,7 +5,9 @@ const { getLotById, placeBid } = require('../facades/lot')
 const errorHandler = require('./error-handler')
 const crypto = require('crypto')
 
-let watchCount = 0 // TODO: major limitation -- this implementation assumes there is only one item!
+const getNumberOfSockets = io => {
+  return Object.keys(io.sockets.sockets).length
+}
 
 const generateName = value => crypto
       .createHash('md5')
@@ -16,8 +18,7 @@ const generateName = value => crypto
 const setupConnection = io => socket => {
   const bidder = generateName(socket.id)
 
-  watchCount++
-  emitWatchCount(io, watchCount)
+  emitWatchCount(io)
 
   const newBid$ = Observable.fromEvent(socket, 'new_bid')
         .map(bid => Object.assign(bid, { bidder }))
@@ -27,8 +28,7 @@ const setupConnection = io => socket => {
     .mergeAll()
 
   socket.on('disconnect', () => {
-    watchCount--
-    emitWatchCount(io, watchCount)
+    emitWatchCount(io)
   })
 
   return biddingForLot$
@@ -40,8 +40,8 @@ const setupConnection = io => socket => {
     .do(bid => io.emit('new_bid_placed', bid))
 }
 
-function emitWatchCount(io, watchCount) {
-  io.emit('watch_count', watchCount - 1) //decrement by 1 as the current user should be excluded from count (alternatively, this can be done on client)
+function emitWatchCount(io) {
+  io.emit('watch_count', getNumberOfSockets(io) - 1) //decrement by 1 as the current user should be excluded from count (alternatively, this can be done on client)
 }
 
 module.exports = setupConnection
