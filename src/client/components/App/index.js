@@ -25,6 +25,13 @@ Observable
   })
   .subscribe()
 
+Observable
+  .fromEvent(socket, 'watch_count')
+  .withLatestFrom(observableView.stream$, (watchCount, { state, dispatch }) => {
+    dispatch(Action.WatchCountChanged(watchCount))
+  })
+  .subscribe()
+
 export default {
   update: update(socket),
   view: observableView,

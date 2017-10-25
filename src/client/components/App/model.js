@@ -17,6 +17,10 @@ export const update = socket => (state, action) => Action.case({
     })
     return {...state, error: null }
   },
+  WatchCountChanged: watchCount => {
+    state.watchCount = watchCount
+    return state
+  },
   Error: error => ({
     ...state, error
   })
